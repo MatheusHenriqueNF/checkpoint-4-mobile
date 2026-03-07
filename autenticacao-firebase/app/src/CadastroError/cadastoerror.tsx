@@ -1,14 +1,26 @@
-import { Text, View } from 'react-native';
-import styles from './style';
-import { useLocalSearchParams } from 'expo-router';
+import { Text, View } from "react-native";
+import styles from "./style";
+import { useLocalSearchParams } from "expo-router";
 
 export default function CadastroError() {
-    const { erro } = useLocalSearchParams();
+  
+    const { mensagem, erro } = useLocalSearchParams<{
+    mensagem?: string;
+    erro?: string;
+  }>();
 
-    return (
-        <View style={styles.container}>
-            <Text>Erro de cadastro</Text>
-            <Text>{erro}</Text>
-        </View>
-    );
+  return (
+
+    <View style={styles.container}>
+      <Text>Erro de cadastro</Text>
+
+            <Text>{mensagem ?? "Não foi possível concluir. Tente novamente."}</Text>
+
+
+      
+      <Text style={{ marginTop: 10 }}>
+        Detalhes (Firebase): {erro}
+      </Text>
+    </View>
+  );
 }

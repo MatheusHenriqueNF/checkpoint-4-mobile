@@ -3,12 +3,24 @@ import styles from './style';
 import { useLocalSearchParams } from 'expo-router';
 
 export default function LogadoError() {
-    const { erro } = useLocalSearchParams();
 
-    return (
-        <View style={styles.container}>
-            <Text>Erro de login</Text>
-            <Text>{erro}</Text>
-        </View>
-    );
+    const { mensagem, erro } = useLocalSearchParams<{
+    mensagem?: string;
+    erro?: string;
+  }>();
+
+  return (
+
+    <View style={styles.container}>
+      <Text>Erro de login</Text>
+
+            <Text>{mensagem ?? "Não foi possível concluir. Tente novamente."}</Text>
+
+
+      
+      <Text style={{ marginTop: 10 }}>
+        Detalhes (Firebase): {erro}
+      </Text>
+    </View>
+  );
 }
