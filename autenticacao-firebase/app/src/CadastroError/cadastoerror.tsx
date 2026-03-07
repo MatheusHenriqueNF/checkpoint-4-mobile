@@ -2,14 +2,13 @@ import { Text, View } from 'react-native';
 import styles from './style';
 import { useLocalSearchParams } from 'expo-router';
 
-
-export default function Cadastro() {
-    const { email } = useLocalSearchParams();
+export default function CadastroError() {
+    const { erro } = useLocalSearchParams();
 
     return (
         <View style={styles.container}>
-            <Text>Usuário cadastado</Text>
-            <Text>{email}</Text>
+            <Text>Erro de cadastro</Text>
+            <Text>{erro}</Text>
         </View>
     );
 }
